@@ -1,0 +1,52 @@
+{
+  "paracetamol": {
+    "name": "Paracetamol",
+    "type": "Pain Reliever",
+    "usage": "Fever and mild to moderate pain",
+    "dosage": "500-1000mg every 4-6 hours",
+    "sideEffects": ["Nausea", "Rash", "Liver problems (with overdose)"],
+    "warnings": "Do not exceed 4000mg per day",
+    "category": "Pain Relief",
+    "interactions": ["warfarin", "metoclopramide"]
+  },
+  "ibuprofen": {
+    "name": "Ibuprofen",
+    "type": "NSAID",
+    "usage": "Pain, inflammation, and fever",
+    "dosage": "200-400mg every 4-6 hours",
+    "sideEffects": ["Stomach upset", "Heartburn", "Dizziness"],
+    "warnings": "Take with food. Not for long-term use without medical supervision.",
+    "category": "Pain Relief",
+    "interactions": ["aspirin", "warfarin", "lisinopril"]
+  },
+  "amoxicillin": {
+    "name": "Amoxicillin",
+    "type": "Antibiotic",
+    "usage": "Bacterial infections",
+    "dosage": "250-500mg every 8 hours",
+    "sideEffects": ["Diarrhea", "Rash", "Nausea"],
+    "warnings": "Complete full course as prescribed",
+    "category": "Antibiotics",
+    "interactions": ["methotrexate", "probenecid"]
+  },
+  "omeprazole": {
+    "name": "Omeprazole",
+    "type": "Proton Pump Inhibitor",
+    "usage": "Acid reflux and ulcers",
+    "dosage": "20-40mg daily",
+    "sideEffects": ["Headache", "Stomach pain", "Nausea"],
+    "warnings": "Take before meals",
+    "category": "Digestive Health",
+    "interactions": ["clopidogrel", "nelfinavir"]
+  },
+  "lisinopril": {
+    "name": "Lisinopril",
+    "type": "ACE Inhibitor",
+    "usage": "High blood pressure",
+    "dosage": "10-40mg daily",
+    "sideEffects": ["Dry cough", "Dizziness", "Headache"],
+    "warnings": "Monitor blood pressure regularly",
+    "category": "Blood Pressure",
+    "interactions": ["ibuprofen", "potassium supplements"]
+  }
+}
