@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Med Expo</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header>
+    <h1>Med Expo</h1>
+    <div class="nav-links">
+      <a href="#" data-section="searchSection" class="active">Search</a>
+      <a href="#" data-section="categoriesSection">Categories</a>
+      <a href="#" data-section="interactionSection">Drug Interactions</a>
+      <a href="#" data-section="savedSection">Saved Medicines</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Search Section -->
+    <div id="searchSection" class="section active">
+      <div class="scanner">
+        <input type="text" id="searchInput" placeholder="Enter medicine name..." onkeypress="if(event.key === 'Enter') searchMedicine()">
+        <button onclick="searchMedicine()">Search</button>
+        <div class="quick-filters" style="margin-top: 15px;">
+          <h4 style="margin: 10px 0; color: #666;">Quick Search by Type:</h4>
+          <button class="filter-btn" onclick="searchByType('OTC')">OTC Medicines</button>
+          <button class="filter-btn" onclick="searchByType('Prescription')">Prescription</button>
+          <button class="filter-btn" onclick="searchByType('Generic')">Generic</button>
+        </div>
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+        </div>
+        <div id="searchResults"></div>
+      </div>
+    </div>
+
+    <!-- Categories Section -->
+    <div id="categoriesSection" class="section">
+      <div class="scanner">
+        <div class="quick-filters">
+          <button class="filter-btn" onclick="showCategory('Pain Relief')">Pain Relief</button>
+          <button class="filter-btn" onclick="showCategory('Antibiotics')">Antibiotics</button>
+          <button class="filter-btn" onclick="showCategory('Digestive Health')">Digestive Health</button>
+          <button class="filter-btn" onclick="showCategory('Blood Pressure')">Blood Pressure</button>
+          <button class="filter-btn" onclick="showCategory('Allergy Relief')">Allergy Relief</button>
+          <button class="filter-btn" onclick="showCategory('Diabetes')">Diabetes</button>
+          <button class="filter-btn" onclick="showCategory('Cholesterol')">Cholesterol</button>
+          <button class="filter-btn" onclick="showCategory('Mental Health')">Mental Health</button>
+        </div>
+        <div class="quick-filters" style="margin-top: 10px;">
+          <h4 style="margin: 10px 0; color: #666;">Filter by Type:</h4>
+          <button class="filter-btn" onclick="filterByType('OTC')">Over-the-Counter</button>
+          <button class="filter-btn" onclick="filterByType('Prescription')">Prescription</button>
+          <button class="filter-btn" onclick="filterByType('Generic')">Generic</button>
+          <button class="filter-btn" onclick="showAllMedicines()">All Medicines</button>
+        </div>
+        <div id="categoryResults"></div>
+      </div>
+    </div>
+
+    <!-- Drug Interaction Section -->
+    <div id="interactionSection" class="section">
+      <div class="scanner">
+        <div class="interaction-checker">
+          <input type="text" id="drug1" placeholder="Enter first medicine">
+          <input type="text" id="drug2" placeholder="Enter second medicine">
+          <button onclick="checkInteractions()">Check Interactions</button>
+          <div id="interactionResults"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saved Medicines Section -->
+    <div id="savedSection" class="section">
+      <div class="scanner">
+        <h2>My Saved Medicines</h2>
+        <div id="savedList" class="saved-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
