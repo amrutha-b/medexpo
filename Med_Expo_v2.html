@@ -1,0 +1,438 @@
+<!DOCTYPE html><!DOCTYPE html>
+
+<html lang="en"><html lang="en">
+
+<head><head>
+
+  <meta charset="UTF-8">  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Med Expo</title>  <title>Med Expo</title>
+
+  <link rel="stylesheet" href="styles/style.css">  <link rel="stylesheet" href="styles/style.css">
+
+</head></head>
+
+<body><body>
+
+  <header>  <header>
+
+    <h1>Med Expo</h1>    <h1>Med Expo</h1>
+
+    <div class="nav-links">    <div class="nav-links">
+
+      <a href="#" data-section="searchSection" class="active">Search</a>      <a href="#" data-section="searchSection" class="active">Search</a>
+
+      <a href="#" data-section="categoriesSection">Categories</a>      <a href="#" data-section="categoriesSection">Categories</a>
+
+      <a href="#" data-section="interactionSection">Drug Interactions</a>      <a href="#" data-section="interactionSection">Drug Interactions</a>
+
+      <a href="#" data-section="savedSection">Saved Medicines</a>      <a href="#" data-section="savedSection">Saved Medicines</a>
+
+    </div>    </div>
+
+  </header>  </header>
+
+
+
+  <main>  <main>
+
+    <!-- Search Section -->    <!-- Search Section -->
+
+    <div id="searchSection" class="section active">    <div id="searchSection" class="section active">
+
+      <div class="scanner">      <div class="scanner">
+
+        <input type="text" id="searchInput" placeholder="Enter medicine name..." onkeypress="if(event.key === 'Enter') searchMedicine()">        <input type="text" id="searchInput" placeholder="Enter medicine name...">
+
+        <button onclick="searchMedicine()">Search</button>        <button onclick="searchMedicine()">Search</button>
+
+        <div class="quick-filters" style="margin-top: 15px;">        <div class="loading" id="loading">
+
+          <h4 style="margin: 10px 0; color: #666;">Quick Search by Type:</h4>          <div class="spinner"></div>
+
+          <button class="filter-btn" onclick="searchByType('OTC')">OTC Medicines</button>        </div>
+
+          <button class="filter-btn" onclick="searchByType('Prescription')">Prescription</button>        <div id="searchResults"></div>
+
+          <button class="filter-btn" onclick="searchByType('Generic')">Generic</button>      </div>
+
+        </div>    </div>
+
+        <div class="loading" id="loading">
+
+          <div class="spinner"></div>    <!-- Categories Section -->
+
+        </div>    <div id="categoriesSection" class="section">
+
+        <div id="searchResults"></div>      <div class="scanner">
+
+      </div>        <div class="quick-filters">
+
+    </div>          <button class="filter-btn" onclick="showCategory('Pain Relief')">Pain Relief</button>
+
+          <button class="filter-btn" onclick="showCategory('Antibiotics')">Antibiotics</button>
+
+    <!-- Categories Section -->          <button class="filter-btn" onclick="showCategory('Digestive Health')">Digestive Health</button>
+
+    <div id="categoriesSection" class="section">          <button class="filter-btn" onclick="showCategory('Blood Pressure')">Blood Pressure</button>
+
+      <div class="scanner">        </div>
+
+        <div class="quick-filters">        <div id="categoryResults"></div>
+
+          <button class="filter-btn" onclick="showCategory('Pain Relief')">Pain Relief</button>      </div>
+
+          <button class="filter-btn" onclick="showCategory('Antibiotics')">Antibiotics</button>    </div>
+
+          <button class="filter-btn" onclick="showCategory('Digestive Health')">Digestive Health</button>
+
+          <button class="filter-btn" onclick="showCategory('Blood Pressure')">Blood Pressure</button>    <!-- Drug Interaction Section -->
+
+          <button class="filter-btn" onclick="showCategory('Allergy Relief')">Allergy Relief</button>    <div id="interactionSection" class="section">
+
+          <button class="filter-btn" onclick="showCategory('Diabetes')">Diabetes</button>      <div class="scanner">
+
+          <button class="filter-btn" onclick="showCategory('Cholesterol')">Cholesterol</button>        <div class="interaction-checker">
+
+          <button class="filter-btn" onclick="showCategory('Mental Health')">Mental Health</button>          <input type="text" id="drug1" placeholder="Enter first medicine">
+
+        </div>          <input type="text" id="drug2" placeholder="Enter second medicine">
+
+        <div class="quick-filters" style="margin-top: 10px;">          <button onclick="checkInteractions()">Check Interactions</button>
+
+          <h4 style="margin: 10px 0; color: #666;">Filter by Type:</h4>          <div id="interactionResults"></div>
+
+          <button class="filter-btn" onclick="filterByType('OTC')">Over-the-Counter</button>        </div>
+
+          <button class="filter-btn" onclick="filterByType('Prescription')">Prescription</button>      </div>
+
+          <button class="filter-btn" onclick="filterByType('Generic')">Generic</button>    </div>
+
+          <button class="filter-btn" onclick="showAllMedicines()">All Medicines</button>
+
+        </div>    <!-- Saved Medicines Section -->
+
+        <div id="categoryResults"></div>    <div id="savedSection" class="section">
+
+      </div>      <div class="scanner">
+
+    </div>        <h2>My Saved Medicines</h2>
+
+        <div id="savedList" class="saved-list"></div>
+
+    <!-- Drug Interaction Section -->      </div>
+
+    <div id="interactionSection" class="section">    </div>
+
+      <div class="scanner">  </main>
+
+        <div class="interaction-checker">
+
+          <input type="text" id="drug1" placeholder="Enter first medicine">  <script src="js/app.js"></script>
+
+          <input type="text" id="drug2" placeholder="Enter second medicine">      acetaminophen: {
+
+          <button onclick="checkInteractions()">Check Interactions</button>        name: "Acetaminophen",
+
+          <div id="interactionResults"></div>        category: "pain",
+
+        </div>        type: "OTC",
+
+      </div>        usage: "Pain relief and fever reduction",
+
+    </div>        description: "Pain reliever and fever reducer",
+
+        warnings: "Do not exceed recommended dose; can cause liver damage",
+
+    <!-- Saved Medicines Section -->        interactions: ["alcohol", "liver medications"]
+
+    <div id="savedSection" class="section">      },
+
+      <div class="scanner">      aspirin: {
+
+        <h2>My Saved Medicines</h2>        name: "Aspirin",
+
+        <div id="savedList" class="saved-list"></div>        category: "pain",
+
+      </div>        type: "OTC",
+
+    </div>        usage: "Pain relief, fever reduction, and blood clot prevention",
+
+  </main>        description: "Nonsteroidal anti-inflammatory drug (NSAID)",
+
+        warnings: "May cause stomach bleeding; avoid in children",
+
+  <script src="js/app.js"></script>        interactions: ["ibuprofen", "blood thinners"]
+
+</body>      },
+
+</html>      // Fever Reducers
+      naproxen: {
+        name: "Naproxen",
+        category: "fever",
+        type: "OTC",
+        usage: "Pain relief and fever reduction",
+        description: "Long-acting nonsteroidal anti-inflammatory drug",
+        warnings: "May cause stomach bleeding; take with food",
+        interactions: ["aspirin", "blood pressure medications"]
+      },
+      // Allergy Medicines
+      diphenhydramine: {
+        name: "Diphenhydramine",
+        category: "allergy",
+        type: "OTC",
+        usage: "Allergy relief and sleep aid",
+        description: "Antihistamine",
+        warnings: "May cause drowsiness; avoid alcohol",
+        interactions: ["alcohol", "sedatives"]
+      },
+      loratadine: {
+        name: "Loratadine",
+        category: "allergy",
+        type: "OTC",
+        usage: "Allergy relief",
+        description: "Non-drowsy antihistamine",
+        warnings: "May cause headache and dry mouth",
+        interactions: ["antifungal medications"]
+      },
+      // Stomach Relief
+      omeprazole: {
+        name: "Omeprazole",
+        category: "stomach",
+        type: "Prescription",
+        usage: "Acid reflux and ulcer treatment",
+        description: "Proton pump inhibitor",
+        warnings: "Long-term use may increase risk of bone fractures",
+        interactions: ["clopidogrel", "iron supplements"]
+      }
+    };
+
+    let savedMedicines = [];
+
+    // Show different sections
+    function showSection(sectionId) {
+      // Update navigation links
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // Hide all sections and show the selected one
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId + 'Section').classList.add('active');
+
+      // Update saved medicines list if showing saved section
+      if (sectionId === 'saved') {
+        updateSavedMedicinesList();
+      }
+    }
+
+    // Search for medicine
+    async function scanMedicine() {
+      const input = document.getElementById("medicineInput").value.trim().toLowerCase();
+      const resultsDiv = document.getElementById("searchResults");
+      
+      if (input === "") {
+        resultsDiv.innerHTML = "<p style='color:var(--primary-color);'>⚠️ Please enter a medicine name.</p>";
+        return;
+      }
+
+      const medicine = medicineDatabase[input];
+      if (medicine) {
+        displayMedicineInfo(medicine, resultsDiv);
+      } else {
+        resultsDiv.innerHTML = `
+          <div class="medicine-details">
+            <h3 style="color: #dc3545;">❌ Medicine Not Found</h3>
+            <p>No information found for "${input}".</p>
+            <p>Please check the spelling or try searching for a different medicine.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Display medicine information
+    function displayMedicineInfo(medicine, container) {
+      container.innerHTML = `
+        <div class="medicine-details">
+          <h3>Medicine Information Found ✅</h3>
+          <div class="detail-section">
+            <p><strong>Name:</strong> ${medicine.name}</p>
+            <p><strong>Type:</strong> ${medicine.type}</p>
+            <p><strong>Usage:</strong> ${medicine.usage}</p>
+            <p><strong>Description:</strong> ${medicine.description}</p>
+            <p><strong>Warnings:</strong> ${medicine.warnings}</p>
+          </div>
+          <button onclick='saveMedicine(${JSON.stringify(medicine)})' class="save-button">
+            Save Medicine
+          </button>
+        </div>
+      `;
+    }
+
+    // Filter medicines by type
+    function filterByType(type) {
+      const resultsDiv = document.getElementById("searchResults");
+      const filteredMedicines = Object.values(medicineDatabase).filter(med => 
+        type === 'generic' || med.type.toLowerCase() === type.toLowerCase()
+      );
+
+      if (filteredMedicines.length > 0) {
+        let html = '<div class="medicine-details"><h3>Filtered Results ✅</h3>';
+        filteredMedicines.forEach(med => {
+          html += `
+            <div class="detail-section">
+              <p><strong>Name:</strong> ${med.name}</p>
+              <p><strong>Type:</strong> ${med.type}</p>
+              <p><strong>Usage:</strong> ${med.usage}</p>
+              <button onclick='displayMedicineInfo(${JSON.stringify(med)}, document.getElementById("searchResults"))'>
+                View Details
+              </button>
+            </div>
+          `;
+        });
+        html += '</div>';
+        resultsDiv.innerHTML = html;
+      } else {
+        resultsDiv.innerHTML = `
+          <div class="medicine-details">
+            <h3 style="color: #dc3545;">❌ No Results</h3>
+            <p>No medicines found for this category.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Show medicines by category
+    function showCategoryMedicines(category) {
+      const resultsDiv = document.getElementById("categoryResults");
+      const categoryMedicines = Object.values(medicineDatabase).filter(med => 
+        med.category === category
+      );
+
+      if (categoryMedicines.length > 0) {
+        let html = '<div class="medicine-details"><h3>Category Medicines</h3>';
+        categoryMedicines.forEach(med => {
+          html += `
+            <div class="detail-section">
+              <p><strong>Name:</strong> ${med.name}</p>
+              <p><strong>Type:</strong> ${med.type}</p>
+              <p><strong>Usage:</strong> ${med.usage}</p>
+              <button onclick='displayMedicineInfo(${JSON.stringify(med)}, document.getElementById("categoryResults"))'>
+                View Details
+              </button>
+            </div>
+          `;
+        });
+        html += '</div>';
+        resultsDiv.innerHTML = html;
+      } else {
+        resultsDiv.innerHTML = `
+          <div class="medicine-details">
+            <h3 style="color: #dc3545;">❌ No Results</h3>
+            <p>No medicines found in this category.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Check drug interactions
+    function checkInteractions() {
+      const drug1 = document.getElementById("drug1").value.trim().toLowerCase();
+      const drug2 = document.getElementById("drug2").value.trim().toLowerCase();
+      const resultsDiv = document.getElementById("interactionResults");
+
+      if (!drug1 || !drug2) {
+        resultsDiv.innerHTML = `
+          <div class="medicine-details">
+            <p style="color: #dc3545;">Please enter both medicines.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const med1 = medicineDatabase[drug1];
+      const med2 = medicineDatabase[drug2];
+
+      if (med1 && med2) {
+        const hasInteraction = med1.interactions.includes(drug2) || med2.interactions.includes(drug1);
+        resultsDiv.innerHTML = `
+          <div class="medicine-details">
+            <h3>${hasInteraction ? '⚠️ Interaction Found' : '✅ No Known Interaction'}</h3>
+            <div class="detail-section">
+              ${hasInteraction 
+                ? `<p>Potential interaction detected between ${med1.name} and ${med2.name}.</p>
+                   <p>Please consult with your healthcare provider before using these medicines together.</p>`
+                : `<p>No known interactions between ${med1.name} and ${med2.name}.</p>
+                   <p>However, always consult with your healthcare provider about potential drug interactions.</p>`
+              }
+            </div>
+          </div>
+        `;
+      } else {
+        resultsDiv.innerHTML = `
+          <div class="medicine-details">
+            <h3 style="color: #dc3545;">❌ Medicine Not Found</h3>
+            <p>One or both medicines not found in our database.</p>
+            <p>Please check the spelling and try again.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Save medicine to list
+    function saveMedicine(medicine) {
+      if (!savedMedicines.find(med => med.name === medicine.name)) {
+        savedMedicines.push(medicine);
+        alert(`${medicine.name} has been saved to your list!`);
+        if (document.getElementById('savedSection').classList.contains('active')) {
+          updateSavedMedicinesList();
+        }
+      } else {
+        alert(`${medicine.name} is already in your saved list.`);
+      }
+    }
+
+    // Update saved medicines list
+    function updateSavedMedicinesList() {
+      const savedList = document.getElementById("savedList");
+      if (savedMedicines.length === 0) {
+        savedList.innerHTML = `
+          <div class="medicine-details">
+            <p>No medicines saved yet.</p>
+          </div>
+        `;
+      } else {
+        let html = '';
+        savedMedicines.forEach(med => {
+          html += `
+            <div class="saved-item">
+              <h3>${med.name}</h3>
+              <p><strong>Type:</strong> ${med.type}</p>
+              <p><strong>Usage:</strong> ${med.usage}</p>
+              <button onclick='displayMedicineInfo(${JSON.stringify(med)}, document.getElementById("savedList"))'>
+                View Details
+              </button>
+              <button onclick="removeSavedMedicine('${med.name}')" style="background-color: #dc3545;">
+                Remove
+              </button>
+            </div>
+          `;
+        });
+        savedList.innerHTML = html;
+      }
+    }
+
+    // Remove medicine from saved list
+    function removeSavedMedicine(name) {
+      savedMedicines = savedMedicines.filter(med => med.name !== name);
+      updateSavedMedicinesList();
+      alert(`${name} has been removed from your saved list.`);
+    }
+  </script>
+</body>
+</html>
